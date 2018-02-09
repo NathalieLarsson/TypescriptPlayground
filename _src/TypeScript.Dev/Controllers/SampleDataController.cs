@@ -8,55 +8,30 @@ using TypeScript.Dev.Models;
 
 namespace TypeScript.Dev.Controllers
 {
-    [Route("api/[controller]")]
+	[Produces("application/json")]
+	[Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-		public EfContext dbCtx = new EfContext(new DbContextOptions<EfContext>());
+	    private readonly EfContext _context;
 
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-	    [HttpGet("[action]")]
-	    public string GetData()
+	    public SampleDataController(EfContext context)
 	    {
-			return "TEST";
+		    _context = context;
+		}
+
+	    [HttpGet]
+	    public IEnumerable<TodoList> GetLists()
+	    {
+		    var lists = _context.TodoLists;
+			return lists;
 	    }
 
 	    [HttpPost("[action]")]
 	    public string PostData(TodoItem item)
 	    {
-		    dbCtx.TodoItems.Add(item);
+		    _context.TodoItems.Add(item);
 
 		    return item.Title;
 	    }
-
-		[HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
-        }
-
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
-        }
     }
 }

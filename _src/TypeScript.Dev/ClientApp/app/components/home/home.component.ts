@@ -7,15 +7,14 @@ import { Http } from '@angular/http';
 })
 
 export class HomeComponent {
-
-	public data: string;
 	public item: TodoItem;
+	public todoLists: TodoLists[];
 
-	//public postItem(http: Http, @Inject('BASE_URL') baseUrl: string) {
-	//	http.post(baseUrl + 'api/SampleData/PostData', this.item).subscribe(result => {
-	//		this.data = result.json() as string;
-	//	}, error => console.error(error));
-	//}
+	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
+		http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
+			this.todoLists = result.json() as TodoLists[];
+		}, error => console.error(error));
+	}
 
 	public students = [{}];
 	public student = new Student("FirstName", "LastName");
@@ -27,6 +26,9 @@ export class HomeComponent {
 	}
 }
 
+interface TodoLists {
+	name: string;
+}
 
 interface TodoItem {
 	title: string;

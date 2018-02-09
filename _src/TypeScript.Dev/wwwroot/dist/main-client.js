@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "492871fa47133a38b26d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8b2fc73b09d62bd66c16"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1678,6 +1678,34 @@ var CounterComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FetchDataComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FetchDataComponent = (function () {
+    function FetchDataComponent() {
+    }
+    FetchDataComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'fetchdata',
+            template: __webpack_require__(24)
+        })
+    ], FetchDataComponent);
+    return FetchDataComponent;
+}());
+
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1693,49 +1721,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 
 
-var FetchDataComponent = (function () {
-    function FetchDataComponent(http, baseUrl) {
-        var _this = this;
-        http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(function (result) {
-            _this.forecasts = result.json();
-        }, function (error) { return console.error(error); });
-    }
-    FetchDataComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'fetchdata',
-            template: __webpack_require__(24)
-        }),
-        __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('BASE_URL')),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], String])
-    ], FetchDataComponent);
-    return FetchDataComponent;
-}());
-
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
 var HomeComponent = (function () {
-    function HomeComponent() {
-        //public postItem(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        //	http.post(baseUrl + 'api/SampleData/PostData', this.item).subscribe(result => {
-        //		this.data = result.json() as string;
-        //	}, error => console.error(error));
-        //}
+    function HomeComponent(http, baseUrl) {
+        var _this = this;
         this.students = [{}];
         this.student = new Student("FirstName", "LastName");
+        http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(function (result) {
+            _this.todoLists = result.json();
+        }, function (error) { return console.error(error); });
     }
     HomeComponent.prototype.addName = function (fName, lName) {
         this.student = new Student(fName, lName);
@@ -1745,7 +1738,9 @@ var HomeComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'home',
             template: __webpack_require__(25)
-        })
+        }),
+        __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('BASE_URL')),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], String])
     ], HomeComponent);
     return HomeComponent;
 }());

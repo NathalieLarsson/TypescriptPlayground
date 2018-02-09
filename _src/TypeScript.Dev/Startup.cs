@@ -25,7 +25,7 @@ namespace TypeScript.Dev
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+			
 			var connectionString = @"Data Source=SQLExpress2016;Persist Security Info=True;User ID=sa;Password=GMk5yLB3ruBx";
 	        services.AddDbContext<EfContext>(opt => opt.UseSqlServer(connectionString));
         }

@@ -11,7 +11,7 @@ export class HomeComponent {
 	public todoLists: TodoLists[];
 
 	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-		http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
+		http.get(baseUrl + 'api/TodoLists/GetTodoLists').subscribe(result => {
 			this.todoLists = result.json() as TodoLists[];
 		}, error => console.error(error));
 	}

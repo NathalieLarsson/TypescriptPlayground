@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8b2fc73b09d62bd66c16"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d0863d8bcb041476c677"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1726,7 +1726,7 @@ var HomeComponent = (function () {
         var _this = this;
         this.students = [{}];
         this.student = new Student("FirstName", "LastName");
-        http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(function (result) {
+        http.get(baseUrl + 'api/TodoLists/GetTodoLists').subscribe(function (result) {
             _this.todoLists = result.json();
         }, function (error) { return console.error(error); });
     }

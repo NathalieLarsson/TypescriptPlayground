@@ -24,7 +24,17 @@ namespace TypeScript.Dev.Controllers
         [HttpGet]
         public IEnumerable<TodoList> GetTodoLists()
         {
-            return _context.TodoLists;
+	        var todoLists = new TodoList[]
+	        {
+		        new TodoList {Name = "Shopping list"},
+		        new TodoList {Name = "Todo - Cleaning"},
+		        new TodoList {Name = "Training list"}
+	        };
+
+	        _context.TodoLists.AddRange(todoLists);
+	        _context.SaveChanges();
+
+			return _context.TodoLists;
         }
 
         // GET: api/TodoLists/5
